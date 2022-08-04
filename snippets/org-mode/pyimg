@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: pyimg
+# key: pyimg
+# --
+
+#+BEGIN_SRC ipython  :ipyfile '((:name "$1" :filename "obipy-resources/$1.png" :caption "$2" :attr_html ":width 350px" :attr_latex ":width 6cm")) :exports results
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+  import numpy as np
+  %matplotlib inline
+
+  $0
+#+END_SRC
