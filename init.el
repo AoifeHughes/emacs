@@ -44,7 +44,7 @@ values."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t)
      latex
-     osx
+     ;; osx  ;; Commented out - Mac-specific layer
      themes-megapack
      emacs-lisp
      git
@@ -131,7 +131,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("DejaVu Sans Mono"
                                :size 12
                                :weight normal
                                :width normal
@@ -146,16 +146,16 @@ values."
    ;; These variables control whether separate commands are bound in the GUI to
    dotspacemacs-distinguish-gui-tab nil
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
-   dotspacemacs-remap-Y-to-y$ nil
+   vim-style-remap-Y-to-y$ nil
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
    ;; there. (default t)
-   dotspacemacs-retain-visual-state-on-shift t
+   vim-style-retain-visual-state-on-shift t
    ;; If non-nil, J and K move lines up and down when in visual mode.
    ;; (default nil)
-   dotspacemacs-visual-line-move-text nil
+   vim-style-visual-line-move-text nil
    ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
    ;; (default nil)
-   dotspacemacs-ex-substitute-global nil
+   vim-style-ex-substitute-global nil
    ;; Name of the default layout (default "Default")
    dotspacemacs-default-layout-name "Default"
    ;; If non nil the default layout name is displayed in the mode-line.
@@ -176,18 +176,18 @@ values."
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
+   helm-enable-auto-resize nil
    ;; if non nil, the helm header is hidden when there is only one source.
-   ;; (default nil)       
-   dotspacemacs-helm-no-header nil
+   ;; (default nil)
+   helm-no-header nil
    ;; define the position to display `helm', options are `bottom', `top',
    ;; `left', or `right'. (default 'bottom)
-   dotspacemacs-helm-position 'bottom
+   helm-position 'bottom
    ;; Controls fuzzy matching in helm. If set to `always', force fuzzy matching
    ;; in all non-asynchronous sources. If set to `source', preserve individual
    ;; source settings. Else, disable fuzzy matching in all sources.
    ;; (default 'always)
-   dotspacemacs-helm-use-fuzzy 'always
+   helm-use-fuzzy 'always
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
    dotspacemacs-enable-paste-transient-state nil
@@ -263,9 +263,9 @@ values."
    ;; (default nil)
    dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
-   ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   ;; tool of the list. Supported tools are `rg', `ag', `ack' and `grep'.
+   ;; (default '("rg" "ag" "ack" "grep"))
+   dotspacemacs-search-tools '("rg" "ag" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -287,7 +287,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
   ;;(add-to-list 'custom-theme-load-path "~/.spacemacs.d/nord-emacs/")
-  (setq ispell-program-name "/usr/local/bin/aspell")
+  (setq ispell-program-name "/usr/bin/aspell")
   (setq ispell-dictionary "en_GB")
   )
 
@@ -314,7 +314,7 @@ you should place your code here."
     (let ((load-it (lambda (f)
                      (load-file (concat (file-name-as-directory dir) f)))
                    ))
-      (mapc load-it (directory-files dir nil "\\.el$"))))
+      (mapc load-it (directory-files dir nil "^[^.#].*\\.el$"))))
 
   (load-directory "~/.spacemacs.d/configs/")
   (setq yas-snippet-dirs '("~/.spacemacs.d/snippets/"))

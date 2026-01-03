@@ -1,5 +1,5 @@
-(setenv "WORKON_HOME" "~/miniforge3/base/envs/")
-(pyvenv-workon "playground") ;; Default working env that has my libs
+(setenv "WORKON_HOME" "~/miniconda3/envs/")
+(pyvenv-workon "Playground") ;; Default working env that has my libs
 (setq python-shell-completion-native-enable nil)
 
 ;;(setq python-shell-interpreter "ipython"
